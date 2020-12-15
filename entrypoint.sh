@@ -73,6 +73,10 @@ note "Files that will be pushed"
 cd "$TARGET_DIR"
 ls -la
 
+note "Change to correct branch"
+
+git checkout --quiet $BRANCH || git checkout -b --quiet $BRANCH
+
 note "Adding git commit"
 
 git add .
