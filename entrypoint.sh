@@ -84,7 +84,7 @@ git diff-index --quiet HEAD || git commit --message "$COMMIT_MESSAGE"
 note "Pushing git commit"
 
 # --set-upstream: sets the branch when pushing to a branch that does not exist
-git push --quiet origin $BRANCH
+git push --quiet --set-upstream origin $BRANCH
 
 # push tag if present
 if test ! -z "$TAG"
