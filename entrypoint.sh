@@ -75,7 +75,7 @@ ls -la
 
 note "Change to correct branch"
 
-git checkout --quiet $BRANCH || git checkout -b --quiet $BRANCH
+git checkout --quiet $BRANCH || git checkout -b $BRANCH
 
 note "Adding git commit"
 
