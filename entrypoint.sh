@@ -73,26 +73,18 @@ note "Files that will be pushed"
 cd "$TARGET_DIR"
 ls -la
 
-note "Make sure to be on right branch and latest version"
-
-git checkout $BRANCH || git checkout -b $BRANCH
-
 note "Adding git commit"
 
 git add .
 git status
 
-git stash
-git pull $CLONED_REPOSITORY $BRANCH
-git stash pop
-
 # git diff-index : to avoid doing the git commit failing if there are no changes to be commit
 git diff-index --quiet HEAD || git commit --message "$COMMIT_MESSAGE"
 
-note "Pushing git commit (using --set-upstream)"
+note "Pushing git commit"
 
 # --set-upstream: sets the branch when pushing to a branch that does not exist
-git push --quiet --set-upstream origin $BRANCH
+git push --quiet origin $BRANCH
 
 # push tag if present
 if test ! -z "$TAG"
