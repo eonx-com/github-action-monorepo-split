@@ -43,7 +43,7 @@ CLONED_REPOSITORY="https://github.com/$SPLIT_REPOSITORY_ORGANIZATION/$SPLIT_REPO
 note "Cloning '$CLONED_REPOSITORY' repository "
 
 # clone repository
-git clone -- "https://$GITHUB_TOKEN@github.com/$SPLIT_REPOSITORY_ORGANIZATION/$SPLIT_REPOSITORY_NAME.git" "$CLONE_DIR"
+git clone -b "$BRANCH" -- "https://$GITHUB_TOKEN@github.com/$SPLIT_REPOSITORY_ORGANIZATION/$SPLIT_REPOSITORY_NAME.git" "$CLONE_DIR"
 ls -la "$CLONE_DIR"
 
 note "Cleaning destination repository of old files"
@@ -62,17 +62,6 @@ else
     COMMIT_MESSAGE=$(git show -s --format=%B "$GITHUB_SHA")
 fi
 
-# Make sure to be in the target dir
-cd "$TARGET_DIR"
-
-note "Changing branch"
-
-git checkout $BRANCH || git checkout -b $BRANCH
-
-note "List files after changing branch"
-
-ls -la
-
 note "Copying contents to git repo"
 
 # copy the package directory including all hidden files to the clone dir
@@ -81,6 +70,7 @@ cp -Ra $PACKAGE_DIRECTORY/. "$TARGET_DIR"
 
 note "Files that will be pushed"
 
+cd "$TARGET_DIR"
 ls -la
 
 note "Adding git commit"
