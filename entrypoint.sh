@@ -83,7 +83,7 @@ git add .
 git status
 
 git stash
-git pull
+git pull $CLONED_REPOSITORY $BRANCH
 git pop
 
 # git diff-index : to avoid doing the git commit failing if there are no changes to be commit
