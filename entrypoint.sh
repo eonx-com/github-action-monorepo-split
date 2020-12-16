@@ -75,9 +75,9 @@ ls -la
 
 note "Make sure to be on right branch and latest version"
 
-git checkout $BRANCH || git checkout -b $BRANCH
 git stash
-git pull
+git checkout $BRANCH || git checkout -b $BRANCH
+git pull --quiet
 git stash pop
 
 note "Adding git commit"
