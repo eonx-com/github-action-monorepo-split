@@ -69,6 +69,10 @@ note "Changing branch"
 
 git checkout $BRANCH || git checkout -b $BRANCH
 
+note "List files after changing branch"
+
+ls -la
+
 note "Copying contents to git repo"
 
 # copy the package directory including all hidden files to the clone dir
