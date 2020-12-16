@@ -43,7 +43,13 @@ CLONED_REPOSITORY="https://github.com/$SPLIT_REPOSITORY_ORGANIZATION/$SPLIT_REPO
 note "Cloning '$CLONED_REPOSITORY' repository "
 
 # clone repository
-git clone -b "$BRANCH" -- "https://$GITHUB_TOKEN@github.com/$SPLIT_REPOSITORY_ORGANIZATION/$SPLIT_REPOSITORY_NAME.git" "$CLONE_DIR"
+git clone -- "https://$GITHUB_TOKEN@github.com/$SPLIT_REPOSITORY_ORGANIZATION/$SPLIT_REPOSITORY_NAME.git" "$CLONE_DIR"
+
+# checkout branch
+cd "$CLONE_DIR"
+git checkout $BRANCH || git checkout -b $BRANCH
+cd
+
 ls -la "$CLONE_DIR"
 
 note "Cleaning destination repository of old files"
