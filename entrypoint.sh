@@ -46,6 +46,12 @@ note "Cloning '$CLONED_REPOSITORY' repository "
 git clone -- "https://$GITHUB_TOKEN@github.com/$SPLIT_REPOSITORY_ORGANIZATION/$SPLIT_REPOSITORY_NAME.git" "$CLONE_DIR"
 ls -la "$CLONE_DIR"
 
+note "Make sure to be on right branch and latest version"
+
+cd "$CLONE_DIR"
+git checkout $BRANCH || git checkout -b $BRANCH
+git pull
+
 note "Cleaning destination repository of old files"
 
 # We're only interested in the .git directory, move it to $TARGET_DIR and use it from now on.
@@ -72,14 +78,6 @@ note "Files that will be pushed"
 
 cd "$TARGET_DIR"
 ls -la
-
-note "Change to correct branch"
-
-git checkout $BRANCH || git checkout -b $BRANCH
-
-note "Pull latest changes"
-
-git pull
 
 note "Adding git commit"
 
