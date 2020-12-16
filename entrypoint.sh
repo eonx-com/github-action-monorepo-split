@@ -77,6 +77,10 @@ note "Change to correct branch"
 
 git checkout $BRANCH || git checkout -b $BRANCH
 
+note "Pull latest changes"
+
+git pull
+
 note "Adding git commit"
 
 git add .
