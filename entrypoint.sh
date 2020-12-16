@@ -51,6 +51,7 @@ note "Make sure to be on right branch and latest version"
 cd "$CLONE_DIR"
 git checkout $BRANCH || git checkout -b $BRANCH
 git pull
+cd "$TARGET_DIR"
 
 note "Cleaning destination repository of old files"
 
