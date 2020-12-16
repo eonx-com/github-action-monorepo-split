@@ -62,6 +62,13 @@ else
     COMMIT_MESSAGE=$(git show -s --format=%B "$GITHUB_SHA")
 fi
 
+# Make sure to be in the target dir
+cd "$TARGET_DIR"
+
+note "Changing branch"
+
+git checkout $BRANCH || git checkout -b $BRANCH
+
 note "Copying contents to git repo"
 
 # copy the package directory including all hidden files to the clone dir
@@ -70,7 +77,6 @@ cp -Ra $PACKAGE_DIRECTORY/. "$TARGET_DIR"
 
 note "Files that will be pushed"
 
-cd "$TARGET_DIR"
 ls -la
 
 note "Adding git commit"
