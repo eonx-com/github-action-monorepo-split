@@ -46,9 +46,10 @@ note "Cloning '$CLONED_REPOSITORY' repository "
 git clone -- "https://$GITHUB_TOKEN@github.com/$SPLIT_REPOSITORY_ORGANIZATION/$SPLIT_REPOSITORY_NAME.git" "$CLONE_DIR"
 
 # checkout branch
+GO_BACK_TO=$PWD
 cd "$CLONE_DIR"
 git checkout $BRANCH || git checkout -b $BRANCH
-cd
+cd "$GO_BACK_TO"
 
 ls -la "$CLONE_DIR"
 
