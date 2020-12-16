@@ -75,6 +75,7 @@ ls -la
 
 note "Make sure to be on right branch and latest version"
 
+git add .
 git stash
 git checkout $BRANCH || git checkout -b $BRANCH
 git pull --quiet
@@ -82,7 +83,6 @@ git stash pop
 
 note "Adding git commit"
 
-git add .
 git status
 
 # git diff-index : to avoid doing the git commit failing if there are no changes to be commit
