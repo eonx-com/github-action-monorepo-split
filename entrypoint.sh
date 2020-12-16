@@ -75,11 +75,11 @@ ls -la
 
 note "Make sure to be on right branch and latest version"
 
-git add .
-git stash
+git diff-index --quiet HEAD || git add .
+git diff-index --quiet HEAD || git stash
 git checkout $BRANCH || git checkout -b $BRANCH
 git pull --quiet
-git stash pop
+git diff-index --quiet HEAD || git stash pop
 
 note "Adding git commit"
 
