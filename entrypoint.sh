@@ -75,7 +75,7 @@ ls -la
 
 note "Make sure to be on right branch and latest version"
 
-git diff-index --quiet HEAD || git add .
+git add .
 git diff-index --quiet HEAD || git stash
 git checkout $BRANCH || git checkout -b $BRANCH
 git pull --quiet
